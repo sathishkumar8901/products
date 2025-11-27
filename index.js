@@ -1,3 +1,4 @@
+require("dotenv").config(); // load env variables
 const express = require("express");
 const mysql = require("mysql2/promise");
 const bodyParser = require("body-parser");
@@ -14,10 +15,10 @@ app.use(bodyParser.json());
 
 
 const db = mysql.createPool({
-    host: "localhost",
-    user: "admin",
-    password: "root",
-    database: "woocommerce"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 //  GET /products 
@@ -44,6 +45,8 @@ app.get("/", async (req, res) => {
     }
 });
 
+
+const PORT = process.env.PORT || 3000;
 
 // POST /segments/evaluate 
 app.post("/segments/evaluate", async (req, res) => {
@@ -109,4 +112,4 @@ app.post("/segments/evaluate", async (req, res) => {
 
 
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
