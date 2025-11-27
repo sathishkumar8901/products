@@ -1,0 +1,277 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    color: #333;
+}
+
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+.sidebar {
+    width: 300px;
+    background: #1f2937;
+    color: #fff;
+    padding: 30px 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.sidebar textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    resize: none;
+    font-size: 14px;
+}
+
+.instructions {
+    margin: 10px 0 20px;
+    font-size: 12px;
+    background: #111827;
+    padding: 10px;
+    border-radius: 6px;
+    line-height: 1.5;
+}
+
+.instructions code {
+    background: #374151;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar button:hover {
+    background: #1d4ed8;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background: #f5f7fa;
+}
+
+.main-content h2 {
+    margin-bottom: 20px;
+}
+
+
+.alert {
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.alert.error {
+    background: #ffe5e5;
+    color: #b30000;
+    border-left: 5px solid red;
+}
+
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+
+.product-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.badge.sale {
+    background: #facc15;
+    color: #111;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.status.instock {
+    color: #16a34a;
+    font-weight: 500;
+}
+
+.status.outstock {
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.category {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.details-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #2563eb;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.details-btn:hover {
+    background: #1d4ed8;
+}
+
+
+.back-button-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #e0e0e0;
+    border-color: #999;
+}
+
+
+.applied-filters {
+    background-color: #f8f8f8;
+    padding: 12px 15px;
+    border-left: 4px solid #007bff;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.applied-filters ul {
+    margin: 5px 0 0 20px;
+    padding: 0;
+    list-style-type: disc;
+}
+
+.applied-filters li {
+    margin-bottom: 3px;
+}
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.filter-tags .tag {
+    background-color: #e0f0ff;
+    color: #007bff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: normal; 
+    word-break: break-word; 
+}
+
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.apply-btn {
+    flex: 1;
+    padding: 12px;
+    background: #2563eb; 
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.apply-btn:hover {
+    background: #1d4ed8;
+}
+
+.reset-btn {
+    flex: 1;
+    padding: 12px;
+    background: #ff4500 !important; 
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.reset-btn:hover {
+    background: #e03e00; 
+}
+
+.warning-message {
+    color: #b30000;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}

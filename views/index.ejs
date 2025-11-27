@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        
+        <aside class="sidebar">
+            <h2>Filter Products</h2>
+            <form action="/segments/evaluate" method="POST" id="filterForm">
+                <textarea id="conditions" name="conditions" placeholder="price > 100
+category = Accessories
+stock_status = instock
+on_sale = true"></textarea>
+
+                <div class="instructions">
+                    Use operators:
+                    <code>=</code> <code>!=</code> <code>&gt;</code> <code>&lt;</code>
+                    <code>&gt;=</code> <code>&lt;=</code>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="apply-btn">Apply Filter</button>
+                    <button type="button" id="resetBtn" class="reset-btn">Reset</button>
+                </div>
+
+                
+                <div id="warningMessage" class="warning-message" style="display:none;">
+                    ⚠ Please enter at least one filter condition!
+                </div>
+            </form>
+        </aside>
+
+        
+        <main class="main-content">
+            <h2>Products</h2>
+
+            
+            <% if (invalidFields && invalidFields.length> 0) { %>
+                <div class="alert error">
+                    ❌ Unknown filter field(s): <%= invalidFields.join(", ") %>
+            </div>
+        <% } else if (noProducts) { %>
+            <div class=" alert error">
+                        ❌ No products match the filter conditions.
+                </div>
+                <% } %>
+
+                    
+                    <div class="products-grid">
+                        <% products.forEach(p=> { %>
+                            <div class="product-card">
+                                <div class="product-header">
+                                    <h3>
+                                        <%= p.title %>
+                                    </h3>
+                                    <% if (p.on_sale==1) { %>
+                                        <span class="badge sale">On Sale</span>
+                                        <% } %>
+                                </div>
+                                <p class="price">₹<%= p.price %>
+                                </p>
+                                <p class="status <%= p.stock_status === 'instock' ? 'instock' : 'outstock' %>">
+                                    <%= p.stock_status==='instock' ? 'In Stock' : 'Out of Stock' %>
+                                </p>
+                                <p class="category"><b>Category:</b>
+                                    <%= p.category %>
+                                </p>
+                                <a href="#" class="details-btn">View Details</a>
+                            </div>
+                            <% }) %>
+                    </div>
+
+        </main>
+
+    </div>
+
+    <script>
+        const resetBtn = document.getElementById("resetBtn");
+        const filterForm = document.getElementById("filterForm");
+        const conditions = document.getElementById("conditions");
+        const warningMessage = document.getElementById("warningMessage");
+
+        
+        resetBtn.addEventListener("click", function () {
+            conditions.value = "";
+            warningMessage.style.display = "none"; 
+        });
+
+        
+        filterForm.addEventListener("submit", function (e) {
+            if (conditions.value.trim() === "") {
+                e.preventDefault(); 
+                warningMessage.style.display = "block"; 
+            }
+        });
+
+        
+        conditions.addEventListener("input", function () {
+            if (warningMessage.style.display === "block") {
+                warningMessage.style.display = "none"; 
+            }
+        });
+    </script>
+
+</body>
+
+</html>
